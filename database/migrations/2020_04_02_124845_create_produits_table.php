@@ -18,6 +18,7 @@ class CreateProduitsTable extends Migration
             $table->string('libelle');
             $table->string('picture')->nullable();
             $table->string('prix');
+            $table->string('quantite');
             $table->string('description');
             $table->integer('categorie_id')->unsigned();
             $table->timestamps();

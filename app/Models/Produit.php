@@ -11,7 +11,8 @@ class Produit extends Model
         'picture',
         'description',
         'categorie_id',
-        'prix'
+        'prix',
+        'quantite'
     ];
 
     public function categorie()
@@ -21,6 +22,12 @@ class Produit extends Model
 
     public function commandes()
     {
-        return $this->belongsToMany('App\Commande');
+        return $this->belongsToMany('App\Commande','produit_commande', 'produit_id', 'commande_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User','favoris', 'produit_id', 'user_id');
+    }
+
 }

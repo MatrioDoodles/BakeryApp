@@ -33,6 +33,10 @@ Route::get('apropos', function () {
     return view('AproposDeNous');
 });
 
+Route::get('favorisCat', function () {
+    return view('ProdFavoris');
+});
+
 Route::post('inscriptions', 'UserController@inscription');
 
 
@@ -49,13 +53,16 @@ Route::post('ModifProduit', 'ProduitController@edit');
 Route::get('ReadProduit', 'ProduitController@show');
 Route::get('Nosprods', 'ProduitController@catalogue');
 Route::post('Search', 'ProduitController@rechercher');
+Route::post('deleteFavoris', 'ProduitController@delfav');
+Route::post('addFavoris', 'ProduitController@addfav');
 
 Route::post('AddCategorie', 'CategorieController@create');
 Route::post('DeleteCategorie', 'CategorieController@destroy');
 Route::post('ModifCategorie', 'CategorieController@edit');
 Route::get('ReadCategorie', 'CategorieController@show');
 
-
+Route::post('commander', 'CommandeController@commander_func');
+Route::get('ReadCommande', 'CommandeController@show');
 
 
 Route::post('log','LogController@authenticate');

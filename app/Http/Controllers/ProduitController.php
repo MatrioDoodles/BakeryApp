@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Produit;
+use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
 {
@@ -19,6 +20,23 @@ class ProduitController extends Controller
 
     }
 
+    public function delfav(Request $request)
+    {
+        
+        $produit = Produit::find(Input::get('id'));
+        $produit->users()->detach(Auth::user()->id);
+        return redirect('favorisCat');
+
+    }
+
+    public function addfav(Request $request)
+    {
+        
+        $produit = Produit::find(Input::get('id'));
+        $produit->users()->attach(Auth::user()->id);
+        return redirect('favorisCat');
+
+    }
 
     public function create(Request $request)
     {   
@@ -26,6 +44,7 @@ class ProduitController extends Controller
         $produit->libelle      = Input::get('libelle');
         $produit->description  = Input::get('description');
         $produit->prix         = Input::get('prix');
+        $produit->quantite        = Input::get('quantite');
         $produit->categorie_id = $request->categorie;
         $produit->picture = null;
         $produit->save();
@@ -66,6 +85,7 @@ class ProduitController extends Controller
         $produit->libelle      = Input::get('libelle');
         $produit->description  = Input::get('description');
         $produit->prix         = Input::get('prix');
+        $produit->quantite        = Input::get('quantite');
         $produit->categorie_id = $request->categorie;
         $produit->save();
         $file = $request->photo;

@@ -67,6 +67,7 @@
 																<th>Description</th>
                                 <th>Catégorie</th>
                                 <th>Prix</th>
+                                <th>Quantite</th>
 																<th>Actions</th>
 																<th>
 																	<button type="button" class="btn btn-danger btn-xs" id="bulk_delete">
@@ -85,6 +86,7 @@
 																	<td>{{$produit->description}}</td>
                                   <td>{{$produit->categorie()->first()->name}}</td>
                                   <td>{{$produit->prix}}</td>
+                                  <td>{{$produit->quantite}}</td>
 																	<td>
                                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModProduit{{$produit->id}}">Modifier</button>
 																		{!! Form::open(['url' => 'DeleteProduit']) !!}
@@ -150,6 +152,14 @@
                                                               {{ Form::label('prix', 'Prix',array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) }}
                                                               <div class="col-md-6 col-sm-6 col-xs-12">
                                                                 {{ Form::text('prix',$prix = $produit->prix, array('class' => 'form-control col-md-7 col-xs-12')) }}
+                                                              </div>
+                                                            </div>
+                                                            </br>
+                                                            </br>
+                                                            <div class="form-group">
+                                                              {{ Form::label('quantite', 'Quantite',array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) }}
+                                                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                {{ Form::text('quantite',$quantite = $produit->quantite, array('class' => 'form-control col-md-7 col-xs-12')) }}
                                                               </div>
                                                             </div>
                                                             </br>

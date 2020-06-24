@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Commande');
     }
 
+    public function produits()
+    {
+        return $this->belongsToMany('App\Produit','favoris', 'user_id', 'produit_id');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

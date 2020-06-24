@@ -38,6 +38,16 @@ class CreateFkKeys extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });
+        Schema::table('favoris', function(Blueprint $table) {
+            $table->foreign('produit_id')->references('id')->on('produits')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+        });
+        Schema::table('favoris', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+        });
     }
 
     /**

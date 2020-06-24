@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProduitCommandeTable extends Migration
+class CreateFavorisTables extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProduitCommandeTable extends Migration
      */
     public function up()
     {
-        Schema::create('produit_commande', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('favoris', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('produit_id')->unsigned();
-            $table->integer('commande_id')->unsigned();
-            $table->integer('quantite')->unsigned();
-           
+            $table->integer('user_id')->unsigned();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateProduitCommandeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produit_commande');
+        Schema::dropIfExists('favoris_tables');
     }
 }
